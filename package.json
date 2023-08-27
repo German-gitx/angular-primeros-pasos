@@ -5,8 +5,13 @@
     "ng": "ng",
     "start": "ng serve -o",
     "build": "ng build",
+    "build:href": "ng build --base-href ./ ",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "delete:docs": "rimraf docs",
+    "copy:dist": "copyfiles dist/bases/* ./docs -f",
+    "delete:dist": "rimraf dist",
+    "build:github": "npm run delete:docs && npm run build:href && npm run copy:dist && npm run delete:dist"
   },
   "private": true,
   "dependencies": {
@@ -29,12 +34,15 @@
     "@angular/compiler-cli": "^15.2.0",
     "@types/jasmine": "~4.3.0",
     "@types/uuid": "^9.0.2",
+    "copyfiles": "^2.4.1",
+    "del-cli": "^5.0.1",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "rimraf": "^5.0.1",
     "typescript": "~4.9.4"
   }
 }
